@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServer";
+
+service Comment {
+  rpc GetCommentInfo (CommentLookupModel) returns (CommentModel);
+  rpc GetNewComments (NewCommentRequest) returns (stream CommentModel);
+}
+
+message NewCommentRequest {
+
+}
+
+message CommentLookupModel {
+  int32 Id = 1;
+}
+
+message CommentModel {
+  int32 Id = 1;
+  int32 UserId = 2;
+  string CommentText = 3;
+  int32 PhotoId = 4;
+  string CreatedAt = 5;
+  string UpdatedAt = 6;
+}
